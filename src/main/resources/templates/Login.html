@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pageTitle}">Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f7fc;
+            font-family: Arial, sans-serif;
+        }
+        .login-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .login-container h3 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        .form-control {
+            border-radius: 5px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .forgot-password {
+            font-size: 14px;
+            text-align: right;
+        }
+        .forgot-password a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 576px) {
+            .login-container {
+                padding: 20px;
+            }
+            .btn-primary {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+<section>
+
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="login-container col-md-6 col-lg-4">
+            <h3>Login to Your Account</h3>
+            
+            <div th:if="${param.error}" class="alert alert-danger">
+                 
+         [[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]
+            </div>
+            
+            <div th:if="${param.logout}" class="alert alert-danger">
+                 
+               Logout Succssfully
+            </div>
+            
+            <form th:action="@{/login}" method="post">
+                <div class="form-group">
+                    <label for="username">Email</label>
+                    <input type="text" id="username" name="username" class="form-control" required placeholder="Enter your username" />
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" class="form-control" required placeholder="Enter your password" />
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            
+            <div class="forgot-password">
+                <a href="/loadforgotpassword">Forgot your password?</a>
+            </div>
+
+            <div class="text-center mt-3">
+                <p>Don't have an account? <a href="/register">Register here</a></p>
+            </div>
+        </div>
+    </div>
+
+
+ <!-- Optional: Bootstrap JS and dependencies for functionality -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</section>
+   
+</body>
+</html>
